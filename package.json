@@ -1,0 +1,20 @@
+{
+  "name": "hedgehog-video",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "node-telegram-bot-api": "^0.54.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
