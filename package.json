@@ -11,10 +11,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "node-telegram-bot-api": "^0.54.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "node-fetch": "^3.1.0",
+    "node-telegram-bot-api": "^0.54.0",
+    "request": "^2.88.2"
   }
 }
