@@ -1,3 +1,4 @@
 /.env
 /node_modules/
-/src/assets/tempVoice/*.ogg
+/src/assets/tempVoice/*
+/src/assets/tempVideo/*
