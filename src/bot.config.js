@@ -13,7 +13,9 @@ export const config = {
     },
     paths: {
         TEMP_VOICE: __dirname + '/assets/tempVoice',
+        TEMP_VIDEO: __dirname + '/assets/tempVideo',
         SOURCE_VIDEO: __dirname + '/assets/sourceVideo',
+        SOURCE_VIDEO_NAME: 'hedgehog-fog.mp4',
     },
     messages: {
         VIDEO_IS_SOON: 'Video is soon...',
