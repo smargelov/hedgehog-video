@@ -11,6 +11,9 @@ export const config = {
     getDownloadLink(token, fileId) {
         return `https://api.telegram.org/file/bot${token}/${fileId}`
     },
+    messageUnderVideo(name) {
+        return `You can forward this video to ${name}. It will be fun for him or her.`
+    },
     paths: {
         TEMP_VOICE: __dirname + '/assets/tempVoice',
         TEMP_VIDEO: __dirname + '/assets/tempVideo',
@@ -19,7 +22,7 @@ export const config = {
     },
     messages: {
         VIDEO_IS_SOON: 'Video is coming soon...',
-        ERROR: 'Something went wrong. Try again later',
+        ERROR: 'Something went wrong. Try again later'
     }
 }
 

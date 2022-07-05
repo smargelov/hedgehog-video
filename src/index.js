@@ -5,17 +5,17 @@ import {download, removeFile} from '../src/helpers/helpers.js'
 import path from 'path'
 import {config} from '../src/bot.config.js'
 import makeTempVideo from '../src/helpers/videoHandler.js'
-import fs from 'fs'
 
 dotenv.config()
 const token = process.env.TELEGRAM_TOKEN
 const bot = new TelegramBot(token, {polling: true})
 
-bot.on('bot_message', async (msg) => {
-    console.log(msg)
-})
-
 bot.on('voice', async (msg) => {
+    const messageId = msg.message_id
+    const isForwarded = !!msg.forward_from
+    const voiceMaster = msg.forward_from?.username || null
+    const authorName = voiceMaster ? `@${voiceMaster}` : `${msg.forward_from?.first_name} ${msg.forward_from?.last_name}`
+    const msgAfterVideo = isForwarded ? config.messageUnderVideo(authorName) : config.messageUnderVideo('your friend')
     const chatId = msg.chat.id
     const fileId = msg.voice.file_id
     try {
@@ -29,7 +29,10 @@ bot.on('voice', async (msg) => {
 
         await download(downloadURL, path.join(config.paths.TEMP_VOICE, `${fileId}.oga`), async () => {
                 await makeTempVideo(path.join(config.paths.SOURCE_VIDEO, config.paths.SOURCE_VIDEO_NAME), fileId, fileTime)
-                await bot.sendVideo(chatId, path.join(config.paths.TEMP_VIDEO, `${fileId}.mp4`))
+                await bot.sendVideo(chatId, path.join(config.paths.TEMP_VIDEO, `${fileId}.mp4`), {
+                    reply_to_message_id: messageId
+                })
+                await bot.sendMessage(chatId, msgAfterVideo)
                 await removeFile(path.join(config.paths.TEMP_VOICE, `${fileId}.oga`))
                 await removeFile(path.join(config.paths.TEMP_VIDEO, `${fileId}.mp4`))
             }
