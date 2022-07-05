@@ -1,4 +1,6 @@
 /.env
 /node_modules/
 /src/assets/tempVoice/*
+!/src/assets/tempVoice/*.md
 /src/assets/tempVideo/*
+!/src/assets/tempVideo/*.md

@@ -1,16 +1,16 @@
 {
   "name": "hedgehog-video",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["hedgehog", "video", "telegram", "bot"],
+  "author": "Sergey Margelov <smargelov@gmail.com>",
   "license": "ISC",
-  "description": "",
+  "description": "Funny video bot for Telegram",
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
