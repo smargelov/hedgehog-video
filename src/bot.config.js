@@ -18,7 +18,7 @@ export const config = {
         SOURCE_VIDEO_NAME: 'hedgehog-fog.mp4',
     },
     messages: {
-        VIDEO_IS_SOON: 'Video is soon...',
+        VIDEO_IS_SOON: 'Video is coming soon...',
         ERROR: 'Something went wrong. Try again later',
     }
 }

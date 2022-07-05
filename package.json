@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sergey Margelov <smargelov@gmail.com>",
   "license": "ISC",
   "description": "",
   "devDependencies": {

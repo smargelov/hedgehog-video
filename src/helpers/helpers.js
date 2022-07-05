@@ -7,6 +7,18 @@ export const download = (url, path, callback) => {
 	})
 }
 
+export const removeFile = async (path) => {
+	try	{
+		await fs.unlink(path, (err) => {
+			if (err) throw err
+		})
+	}
+	catch (e) {
+		console.log(e)
+	}
+}
+
 export default {
-	download
+	download,
+	removeFile
 }
