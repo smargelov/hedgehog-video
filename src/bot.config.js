@@ -15,6 +15,7 @@ export const config = {
         return `You can forward this video to ${name}. It will be fun for him or her.`
     },
     paths: {
+        ASSETS: __dirname + '/assets',
         TEMP_VOICE: __dirname + '/assets/tempVoice',
         TEMP_VIDEO: __dirname + '/assets/tempVideo',
         SOURCE_VIDEO: __dirname + '/assets/sourceVideo',
@@ -33,7 +34,7 @@ If you like it, you can thank the /author or help /develop this bot.
 
 Other bot /commands`,
         COMMANDS: `
-/start - How to use this bot
+/about - How to use this bot
 /author - Author information
 /statistics - Bot usage statistics
 /privacy - Privacy statement
@@ -42,7 +43,7 @@ Other bot /commands`,
 /donation - Donation information`,
         DEVELOP: 'You can find the source code on [GitHub](https://github.com/smargelov/hedgehog-video). I would also be happy to consider your pull requests and issues there as well.',
         AUTHOR: 'This bot is developed by @smargelov. You can thank him for his work. Or you can make a small /donation to him.',
-        STATISTICS: 'Bot stats will be here soon',
+        STATISTICS: 'A little bit of this bot\'s statistics:',
         DONATION: `You can make a donation to the /author who is collecting for the bike:
 BTC — 17XsYUQDwg7m4EBj41Pa9SeDjjK4U6DwJX
 ETH — 0xc5e1cc6d0b0b4eb61b9b84d19680ee85a9101e83

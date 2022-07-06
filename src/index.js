@@ -5,37 +5,18 @@ import {download, removeFile} from '../src/helpers/helpers.js'
 import path from 'path'
 import {config} from '../src/bot.config.js'
 import makeTempVideo from '../src/helpers/videoHandler.js'
+import commands from '../src/commands.js'
+import botStatistic from '../src/statistics.js'
 
 dotenv.config()
 const token = process.env.TELEGRAM_TOKEN
 const bot = new TelegramBot(token, {polling: true})
 
-bot.onText(/\/start/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.ABOUT)
-})
-
-bot.onText(/\/develop/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.DEVELOP, {parse_mode: 'Markdown', disable_web_page_preview: true})
-})
-
-bot.onText(/\/commands/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.COMMANDS)
-})
-
-bot.onText(/\/statistics/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.STATISTICS)
-})
-
-bot.onText(/\/author/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.AUTHOR)
-})
-
-bot.onText(/\/privacy/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.PRIVACY)
-})
-
-bot.onText(/\/donation/, (msg) => {
-    bot.sendMessage(msg.chat.id, config.messages.DONATION)
+commands(bot)
+bot.onText(/\/givememd5listusers/, (msg) => {
+    const chatId = msg.chat.id
+    const usersString = JSON.stringify(botStatistic.users)
+    bot.sendMessage(chatId, usersString)
 })
 
 bot.on('voice', async (msg) => {
@@ -63,6 +44,10 @@ bot.on('voice', async (msg) => {
                 await bot.sendMessage(chatId, msgAfterVideo)
                 await removeFile(path.join(config.paths.TEMP_VOICE, `${fileId}.oga`))
                 await removeFile(path.join(config.paths.TEMP_VIDEO, `${fileId}.mp4`))
+                await botStatistic.setAllTimeSeconds(fileTime)
+                await botStatistic.addUniqUser(msg.from.id)
+                await botStatistic.videoCountIncrement()
+                await botStatistic.writeToFile()
             }
         )
     } catch (e) {
