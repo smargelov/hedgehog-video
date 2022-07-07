@@ -1,10 +1,7 @@
-import statistics from '../src/assets/statistics.json' assert {type: 'json'}
 import fs from 'fs'
 import md5 from 'md5'
 import {join} from 'path'
 import config from '../src/bot.config.js'
-
-const statisticsFile = statistics
 
 class Statistic {
     constructor(data) {
@@ -53,10 +50,12 @@ class Statistic {
     }
 
     writeToFile() {
-        fs.writeFileSync(join(config.paths.ASSETS, 'statistics.json'), this.getJsonFromStatistic())
+        fs.writeFileSync(join(config.paths.ASSETS, 'statistics.txt'), this.getJsonFromStatistic())
     }
 
 }
+
+const statisticsFile = JSON.parse(fs.readFileSync(join(config.paths.ASSETS, 'statistics.txt'), 'utf8'))
 
 const botStatistic = new Statistic(statisticsFile)
 

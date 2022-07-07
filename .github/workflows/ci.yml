@@ -47,7 +47,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SSH_KNOWN_HOSTS }}
           REMOTE_USER: "root"
           TARGET: ${{ secrets.SSH_DIR }}
-          EXCLUDE: "/node_modules/"
+          EXCLUDE: "/node_modules/, /.git/, /.github/, /.gitignore/, /.DS_Store/, /.env/"
 
       - name: Start Docker-compose 🐳
         uses: appleboy/ssh-action@master
