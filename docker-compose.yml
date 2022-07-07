@@ -7,4 +7,6 @@ services:
     restart: always
     ports:
       - '5000:5000'
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
     command: 'npm run start'

@@ -58,4 +58,4 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: TELEGRAM_TOKEN
-          script: cd ${{ secrets.SSH_DIR }} && docker-compose up -d --build --force-recreate
+          script: cd ${{ secrets.SSH_DIR }} && export TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }} && docker-compose up -d --build --force-recreate
