@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    container_name: hengehog-app
+    restart: always
+    ports:
+      - '5000:5000'
+    command: 'npm run start'
