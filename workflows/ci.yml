@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: Deploy to Server 🚀
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "."
+          REMOTE_HOST: ${{ secrets.SSH_KNOWN_HOSTS }}
+          REMOTE_USER: "root"
+          TARGET: ${{ secrets.SSH_DIR }}
+          EXCLUDE: "/node_modules/"
+
+      - name: Start Docker-compose 🐳
+        uses: appleboy/ssh-action@master
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        with:
+          host: ${{ secrets.SSH_KNOWN_HOSTS }}
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: TELEGRAM_TOKEN
+          script: cd ${{ secrets.SSH_DIR }} && docker-compose up -d --build --force-recreate

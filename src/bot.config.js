@@ -42,7 +42,7 @@ Other bot /commands`,
 /commands - All bot commands
 /donation - Donation information`,
         DEVELOP: 'You can find the source code on [GitHub](https://github.com/smargelov/hedgehog-video). I would also be happy to consider your pull requests and issues there as well.',
-        AUTHOR: 'This bot is developed by @smargelov. You can thank him for his work. Or you can make a small /donation to him.',
+        AUTHOR: 'This bot is developed by @smargelov. You can thank him for his work. Or you can make a small /donation to him. \n\nGeneral thanks to Sergey aka Sawa for the idea and Natalia for the motivation.',
         STATISTICS: 'A little bit of this bot\'s statistics:',
         DONATION: `You can make a donation to the /author who is collecting for the bike:
 BTC — 17XsYUQDwg7m4EBj41Pa9SeDjjK4U6DwJX
