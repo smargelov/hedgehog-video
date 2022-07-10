@@ -1,7 +1,7 @@
-import {config} from '../src/bot.config.js'
-import botStatistic from '../src/statistics.js'
+const config = require('../src/bot.config.js')
+const botStatistic = require('../src/statistics.js')
 
-export const commands = (bot) => {
+const commands = (bot) => {
     bot.onText(/\/start/, (msg) => {
         bot.sendMessage(msg.chat.id, config.messages.ABOUT)
     })
@@ -41,4 +41,4 @@ Total time of all videos: ${botStatistic.allTimeString}
     })
 }
 
-export default commands
+module.exports = commands

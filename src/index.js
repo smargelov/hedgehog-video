@@ -1,14 +1,13 @@
-import TelegramBot from 'node-telegram-bot-api'
-import fetch from 'node-fetch'
-import * as dotenv from 'dotenv'
-import {download, removeFile} from '../src/helpers/helpers.js'
-import path from 'path'
-import {config} from '../src/bot.config.js'
-import makeTempVideo from '../src/helpers/videoHandler.js'
-import commands from '../src/commands.js'
-import botStatistic from '../src/statistics.js'
+const TelegramBot = require('node-telegram-bot-api')
+require('dotenv').config()
+const {download, removeFile} = require('../src/helpers/helpers.js')
+const path = require('path')
+const config = require('../src/bot.config.js')
+const makeTempVideo = require('../src/helpers/videoHandler.js')
+const commands = require('../src/commands.js')
+const botStatistic = require('../src/statistics.js')
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
 
-dotenv.config()
 const token = process.env.TELEGRAM_TOKEN
 const bot = new TelegramBot(token, {polling: true})
 
@@ -51,6 +50,7 @@ bot.on('voice', async (msg) => {
             }
         )
     } catch (e) {
+        console.log(e)
         bot.sendMessage(chatId, config.messages.ERROR)
     }
 })

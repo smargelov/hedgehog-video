@@ -35,6 +35,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Run tests 🧪
+        run: npm run test
+
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
