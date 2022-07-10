@@ -1,4 +1,4 @@
-const {download} = require('./helpers')
+const {download, removeFile} = require('./helpers')
 const fs = require('fs')
 
 describe('Function "download"', () => {
@@ -25,5 +25,28 @@ describe('Function "download"', () => {
         await download(url, path, callback)
         expect(callback).not.toHaveBeenCalled()
         expect(fs.existsSync(path)).toBe(false)
+    })
+})
+
+describe('Function "removeFile"', () => {
+    const testDirPath = 'test'
+    const testFileName = 'test.txt'
+    beforeEach(() => {
+        fs.mkdirSync(testDirPath)
+    })
+    afterEach(() => {
+        fs.rm(testDirPath, {recursive: true})
+    })
+    test('should remove file', () => {
+        const path = `${testDirPath}/${testFileName}`
+        fs.writeFileSync(path, 'test')
+        removeFile(path)
+        expect(fs.readdirSync(testDirPath)).not.toContain(testFileName)
+        expect(fs.existsSync(path)).toBe(false)
+    })
+    test('should throw error', () => {
+        const path = `${testDirPath}/wrong-path.txt`
+        expect(() => removeFile(path)).toThrow()
+        expect(() => removeFile(null)).toThrowError('Path is not defined')
     })
 })

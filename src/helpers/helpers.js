@@ -10,14 +10,9 @@ const download = (url, path, callback) => {
     })
 }
 
-const removeFile = async (path) => {
-    try {
-        await fs.unlink(path, (err) => {
-            if (err) throw err
-        })
-    } catch (e) {
-        console.log(e)
-    }
+const removeFile = (path) => {
+    if (!path) { throw new Error('Path is not defined') }
+    fs.unlinkSync(path)
 }
 
 module.exports = {
