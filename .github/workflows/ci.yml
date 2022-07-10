@@ -35,11 +35,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Run tests 🧪
-        run: npm run test
-
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
+
+      - name: Run tests 🧪
+        run: npm run test
 
       - name: Deploy to Server 🚀
         uses: easingthemes/ssh-deploy@main
