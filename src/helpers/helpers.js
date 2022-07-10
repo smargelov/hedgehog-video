@@ -1,24 +1,21 @@
-import request from 'request'
-import fs from 'fs'
+const request = require('request')
+const fs = require('fs')
 
-export const download = (url, path, callback) => {
-	request.head(url, (err, res, body) => {
-		request(url).pipe(fs.createWriteStream(path)).on('close', callback);
-	})
+const download = (url, path, callback) => {
+    request.head(url, (err, res, body) => {
+        if (err && res.statusCode !== 200) {
+            throw new Error('Error downloading file')
+        }
+        request(url).pipe(fs.createWriteStream(path)).on('close', callback)
+    })
 }
 
-export const removeFile = async (path) => {
-	try	{
-		await fs.unlink(path, (err) => {
-			if (err) throw err
-		})
-	}
-	catch (e) {
-		console.log(e)
-	}
+const removeFile = (path) => {
+    if (!path) { throw new Error('Path is not defined') }
+    fs.unlinkSync(path)
 }
 
-export default {
-	download,
-	removeFile
+module.exports = {
+    download,
+    removeFile
 }

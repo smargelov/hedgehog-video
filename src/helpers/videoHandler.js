@@ -1,6 +1,6 @@
-import config from '../../src/bot.config.js'
-import ffmpeg from 'fluent-ffmpeg'
-import ffmpegInstaller from '@ffmpeg-installer/ffmpeg'
+const config = require('../../src/bot.config.js')
+const ffmpeg = require('fluent-ffmpeg')
+const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg')
 
 const ffmpegPath = ffmpegInstaller.path
 ffmpeg.setFfmpegPath(ffmpegPath)
@@ -22,7 +22,7 @@ const getLoopTimes = async (time) => {
  * @param {string} fileTime
  * @returns {Promise<void>}
  */
-export const makeTempVideo = async (filePath, fileName, fileTime) => {
+const makeTempVideo = async (filePath, fileName, fileTime) => {
     const loopTimes = await getLoopTimes(fileTime)
     await new Promise((resolve, reject) => {
         ffmpeg(filePath)
@@ -42,6 +42,4 @@ export const makeTempVideo = async (filePath, fileName, fileTime) => {
     })
 }
 
-
-export default makeTempVideo
-
+module.exports = makeTempVideo
