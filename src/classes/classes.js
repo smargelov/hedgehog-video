@@ -3,7 +3,7 @@ const fs = require('fs')
 const {join} = require('path')
 const config = require('../../src/bot.config.js')
 
-class Statistics {
+module.exports = class Statistics {
     constructor(data) {
         this.users = data.users
         this.videoCount = data.videos
@@ -53,5 +53,3 @@ class Statistics {
         fs.writeFileSync(join(config.paths.ASSETS, 'statistics.txt'), this.getJsonFromStatistic())
     }
 }
-
-module.exports = { Statistics }
