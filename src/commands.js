@@ -21,9 +21,9 @@ const commands = (bot) => {
     bot.onText(/\/statistics/, (msg) => {
         const statistics = `${config.messages.STATISTICS}
         
-Bot users: ${botStatistic.usersCount}
-Videos created: ${botStatistic.videoCount}
-Total time of all videos: ${botStatistic.allTimeString}
+Number of bot users: ${botStatistic.usersCount}
+Number of videos created: ${botStatistic.videoCount}
+Total duration of all videos: ${botStatistic.allTimeString}
         `
         bot.sendMessage(msg.chat.id, statistics)
     })

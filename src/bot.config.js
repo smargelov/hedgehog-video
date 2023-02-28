@@ -8,7 +8,7 @@ const config = {
         return `https://api.telegram.org/file/bot${token}/${fileId}`
     },
     messageUnderVideo(name) {
-        return `You can forward this video to ${name}. It will be fun for him or her.`
+        return `Feel free to share this video with ${name}. It's sure to provide them with some amusement.`
     },
     paths: {
         ASSETS: path.join(__dirname, '/assets'),
@@ -20,15 +20,15 @@ const config = {
     messages: {
         VIDEO_IS_SOON: 'Video is coming soon...',
         ERROR: 'Something went wrong. Try again later',
-        PRIVACY: 'We don\'t keep or share your personal data, as well as the original voice message and the resulting video with anyone. All /statistics are anonymized. You can see the source code to be sure.',
+        PRIVACY: 'We do not retain or distribute any of your personal information, nor do we store the original voice message or resulting video. Additionally, all /statistics are rendered anonymous. You are welcome to review the source code for further assurance.',
         ABOUT: `
-        Sometimes voice messages can be very boring. Just forward such a message to this bot and it will make a funny video out of it. 
-        
-Alternatively, you can dictate your message to this bot and forward the result to a friend.
+        Occasionally, voice messages may come across as dull. However, you can simply forward such a message to this bot, and it will transform it into a humorous video.
 
-If you like it, you can thank the /author or help /develop this bot.
+Alternatively, you can dictate your message to the bot, and then share the resulting video with your friend.
 
-Other bot /commands`,
+If you find this bot useful, you may express your gratitude to the /author or offer assistance with the /development of this bot.
+
+There are also other /commands available for this bot.`,
         COMMANDS: `
 /about - How to use this bot
 /author - Author information
@@ -37,14 +37,14 @@ Other bot /commands`,
 /develop - Developing the bot
 /commands - All bot commands
 /donation - Donation information`,
-        DEVELOP: 'You can find the source code on [GitHub](https://github.com/smargelov/hedgehog-video). I would also be happy to consider your pull requests and issues there as well.',
-        AUTHOR: 'This bot is developed by @smargelov. You can thank him for his work. Or you can make a small /donation to him. \n\nGeneral thanks to Sergey aka Sawa for the idea and Natalia for the motivation.',
-        STATISTICS: 'A little bit of this bot\'s statistics:',
-        DONATION: `You can make a donation to the /author who is collecting for the bike:
+        DEVELOP: 'The source code for this project is available on [GitHub](https://github.com/smargelov/hedgehog-video). We welcome contributions from the community, so please feel free to submit your pull requests and issues on the platform. We would be delighted to review and consider them.',
+        AUTHOR: 'This bot was created by @smargelov. If you find it helpful, you may express your appreciation to him or make a small /donation.\n\nSpecial thanks are owed to Sergey, also known as Sawa, for providing the initial concept, and to Natalia for her encouragement and motivation.',
+        STATISTICS: 'Here are some statistics related to this bot:',
+        DONATION: `If you would like to contribute to the author, who is currently saving up for a bike, you may do so by making a donation using any of the following cryptocurrency addresses:
 BTC — 17XsYUQDwg7m4EBj41Pa9SeDjjK4U6DwJX
 ETH — 0xc5e1cc6d0b0b4eb61b9b84d19680ee85a9101e83
 USDT (TRC20) — TJhss3qHfMwMvV6a5r6sMxNnyEFfuzZxVi
-If it is more convenient for you to donate through Russian or Georgian banks, text me. I'll give you the details.`
+Alternatively, if it is more convenient for you to donate through Russian or Georgian banks, please feel free to contact us via message, and we will be happy to provide you with the necessary details.`
     }
 }
 
